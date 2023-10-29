@@ -1,0 +1,298 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(180deg, rgb(255, 157, 157) 0%, rgb(255, 157, 176) 35%, rgb(255, 224, 227) 100%);
+
+}
+.container{
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  padding: 10px;
+  max-width: 1050px;
+}
+section{
+  background: #fff;
+  border-radius: 7px;
+}
+.tools-board{
+  width: 210px;
+  padding: 15px 22px 0;
+}
+.tools-board .row{
+  margin-bottom: 20px;
+}
+.row .options{
+  list-style: none;
+  margin: 10px 0 0 5px;
+}
+.row .options .option{
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.option:is(:hover, .active) img{
+  filter: invert(17%) sepia(90%) saturate(3000%) hue-rotate(900deg) brightness(100%) contrast(100%);
+}
+.option :where(span, label){
+  color: #5A6168;
+  cursor: pointer;
+  padding-left: 10px;
+}
+.option:is(:hover, .active) :where(span, label){
+  color: #4A98F7;
+}
+.option #fill-color{
+  cursor: pointer;
+  height: 14px;
+  width: 14px;
+}
+#fill-color:checked ~ label{
+  color: #4A98F7;
+}
+.option #size-slider{
+  width: 100%;
+  height: 5px;
+  margin-top: 10px;
+}
+.colors .options{
+  display: flex;
+  justify-content: space-between;
+}
+.colors .option{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-top: 3px;
+  position: relative;
+}
+.colors .option:nth-child(1){
+  background-color: #fff;
+  border: 1px solid #bfbfbf;
+}
+.colors .option:nth-child(2){
+  background-color: #000;
+}
+.colors .option:nth-child(3){
+  background-color: #E02020;
+}
+.colors .option:nth-child(4){
+  background-color: #6DD400;
+}
+.colors .option:nth-child(5){
+  background-color: #4A98F7;
+}
+.colors .option.selected::before{
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  height: 12px;
+  width: 12px;
+  background: inherit;
+  border-radius: inherit;
+  border: 2px solid #fff;
+  transform: translate(-50%, -50%);
+}
+.colors .option:first-child.selected::before{
+  border-color: #ccc;
+}
+.option #color-picker{
+  opacity: 0;
+  cursor: pointer;
+}
+.buttons button{
+  width: 100%;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 11px 0;
+  font-size: 0.9rem;
+  margin-bottom: 13px;
+  background: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.buttons .clear-canvas{
+  color: #6C757D;
+  border: 1px solid #6C757D;
+  transition: all 0.3s ease;
+}
+.clear-canvas:hover{
+  color: #fff;
+  background: #6C757D;
+}
+.buttons .save-img{
+  background: #4A98F7;
+  border: 1px solid #4A98F7;
+}
+.drawing-board{
+  flex: 1;
+  overflow: hidden;
+}
+.drawing-board canvas{
+  width: 100%;
+  height: 100%;
+}
+
+.navigation 
+{
+    width: 60px;
+    height: 400px;
+    background: #ff6f84;
+    position: absolute;
+    right: 0px; /* Add a margin from the right side */
+    top: 50%; /* Vertically align to the center */
+    transform: translateY(-50%); /* Correct for vertical alignment */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+  
+  /* ... Rest of your CSS remains the same ... */
+
+.navigation ul {
+  display: flex;
+  flex-direction: column; /* Set flex-direction to column */
+  height: 350px; /* Changed height to 350px */
+}
+
+.navigation ul li {
+  position: relative;
+  list-style: none;
+  height: 70px; /* Changed height to 70px */
+  width: 60px; /* Changed width to 60px */
+  z-index: 2;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  font-size: 1.5em;
+  text-align: center;
+  transition: 0.5s;
+  color: #fff;
+  transform: translateX(3px); /* Shift right by 3 pixels */
+}
+
+.navigation ul li.active a .icon {
+  transform: translateX(-29px); /* Shift right by 3 pixels */
+}
+
+.navigation ul li a .text {
+  position: absolute;
+  color: #fff;
+  font-weight: 400;
+  font-size: 0.75em;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  opacity: 0;
+  transform: translateX(18px); /* Shift right by 3 pixels */
+}
+
+.navigation ul li.active a .text {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+.indicator {
+    position: absolute;
+    left: -32px;
+    height: 70px;
+    width: 70px;
+    background: #ff6f84;
+    border-radius: 50%;
+    border: 6px solid var(--clr2);
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.navigation ul li:nth-child(1) a .icon {
+    transform: translateX(0px); /* Move it to the left */
+    transition: transform 0.5s;
+  }
+  
+  .navigation ul li:nth-child(1):hover a .icon {
+    transform: translateX(70px *0); /* Move it back to its initial position */
+  }
+  .navigation ul li:nth-child(1) a .text {
+  opacity: 0; /* Initially set the opacity to 0 */
+  transform: translateX(18px); /* Initially offset the text */
+}
+
+.navigation ul li:nth-child(1):hover a .text {
+  opacity: 1; /* Set the opacity to 1 when hovered */
+  transform: translateX(4px);
+}
+
+.navigation ul li:nth-child(2).active ~ .indicator,
+.navigation ul li:nth-child(2):hover ~ .indicator {
+    transform: translateY(calc(70px * 1));
+}
+
+.navigation ul li:nth-child(3).active ~ .indicator,
+.navigation ul li:nth-child(3):hover ~ .indicator {
+    transform: translateY(calc(70px * 2));
+}
+
+.navigation ul li:nth-child(4).active ~ .indicator,
+.navigation ul li:nth-child(4):hover ~ .indicator {
+    transform: translateY(calc(70px * 3));
+}
+
+.navigation ul li:nth-child(5).active ~ .indicator,
+.navigation ul li:nth-child(5):hover ~ .indicator {
+    transform: translateY(calc(70px * 4));
+}
+
+.navigation ul li a:hover .icon {
+    transform: translateX(-29px);
+    transition: transform 0.5s;
+}
+
+.navigation ul li a:hover .text {
+    transform: translateX(1px);
+    opacity: 1;
+    transition: transform 0.5s, opacity 0.5s;
+}
+.icon {
+    font-size: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #ffffff;
+
+}
+.navigation ul li a .icon {
+position: relative;
+display: block;
+font-size: 1.5em;
+text-align: center;
+transition: 0.5s;
+color: #fff;
+transform: translateX(3px); /* Shift right by 3 pixels */
+}
